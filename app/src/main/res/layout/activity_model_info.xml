@@ -163,22 +163,37 @@
                         android:textSize="30sp"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/textView"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="0dp"
+                        android:orientation="horizontal"
+                        >
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
                         android:text="Description"
                         android:textColor="@color/black"
                         android:textSize="18sp"
                         android:textStyle="bold" />
+
+                        <Button
+                            android:id="@+id/Sound_BT"
+                            android:layout_width="30dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/ic_stop_audio"
+                            android:layout_marginLeft="10dp"
+                            android:gravity="end" />
+                    </LinearLayout>
 
                     <TextView
                         android:id="@+id/textView2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="Earth is the third planet from the Sun and the only astronomical object known to harbor life. "
+                        android:text="@string/earth_description"
                         android:textSize="16sp" />
 
                     <!--                        <androidx.cardview.widget.CardView-->
@@ -220,7 +235,7 @@
                         android:layout_marginBottom="30dp"
                         android:background="@drawable/cus_bottom"
                         android:paddingHorizontal="60dp"
-                        android:text="View More"
+                        android:text="View Model"
                         android:textColor="#4E342E" />
 
                 </LinearLayout>
