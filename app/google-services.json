@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "886902774726",
+    "project_id": "ar-app-b968c",
+    "storage_bucket": "ar-app-b968c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:886902774726:android:1ac770a17513c2ad5530c7",
+        "android_client_info": {
+          "package_name": "com.simba.argenesis"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "886902774726-pcbmnt7i5d2nh4ja6bvi0n2vrgfl5tn8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDn8N_Vchmfj-CHJGQmgZnt3-wE6JEhQzA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "886902774726-pcbmnt7i5d2nh4ja6bvi0n2vrgfl5tn8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

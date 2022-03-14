@@ -97,19 +97,20 @@
         android:layout_marginHorizontal="25dp"
         android:layout_marginVertical="25dp"
         app:layout_constraintBottom_toTopOf="@id/earthInfo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonsss">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_gravity="center_horizontal"
-            app:layout_constraintTop_toTopOf="@id/Earthphoto"
-            app:layout_constraintBottom_toBottomOf="@id/Earthphoto"
-            app:layout_constraintDimensionRatio="1:1"
-
             app:cardCornerRadius="20dp"
-            app:cardElevation="0dp">
-<!--            android:layout_marginTop="44dp"-->
+            app:cardElevation="0dp"
+            app:layout_constraintBottom_toBottomOf="@id/Earthphoto"
+            app:layout_constraintDimensionRatio="0.5:0.5"
+            app:layout_constraintTop_toTopOf="@id/Earthphoto">
+            <!--            android:layout_marginTop="44dp"-->
 
 
             <ImageView
@@ -156,8 +157,9 @@
 
                     <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginTop="30dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="10dp"
                         android:text="Earth 3D Model"
                         android:textColor="@color/black"
                         android:textSize="30sp"
