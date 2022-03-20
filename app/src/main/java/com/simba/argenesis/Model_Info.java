@@ -1,19 +1,22 @@
 package com.simba.argenesis;
-
 import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.UtteranceProgressListener;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
-
-import java.io.StringReader;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.bumptech.glide.*;
 import java.util.Locale;
-
 
 public class Model_Info extends AppCompatActivity {
 
@@ -22,15 +25,44 @@ public class Model_Info extends AppCompatActivity {
     Toast mToast = null;
     TextToSpeech TTS;
 
+    TextView modelName, modelDescription;
+    ImageView modelImage;
+
     final boolean[] sound = {false};
 
     Button SoundButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_model_info);
+        modelName = findViewById(R.id.Model_Name);
+        modelDescription = findViewById(R.id.Model_Description);
+        modelImage = findViewById(R.id.Model_Image);
+        Context context = getBaseContext();
 
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        DocumentReference docRef = db.collection("Model_Information").document("6xfT3Ve9QruwkaqUSrVz");
+
+        docRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DocumentSnapshot document = task.getResult();
+                if (document.exists()) {
+                    Log.d("TAG", "DocumentSnapshot data: " + document.getData());
+
+                    modelName.setText((CharSequence) document.get("Model_Name"));
+                    modelDescription.setText((CharSequence) document.get("Model_Description"));
+                    Glide.with(context)
+                            .load(document.get("Model_Image"))
+                            .into(modelImage);
+                } else {
+                    Log.d("TAG", "No such document");
+                }
+            } else {
+                Log.d("TAG", "get failed with ", task.getException());
+            }
+        });
 
         viewAR = findViewById(R.id.View_AR_Model_Button);
         viewAR.setOnClickListener(view -> {
@@ -67,7 +99,6 @@ public class Model_Info extends AppCompatActivity {
             TTS.setOnUtteranceProgressListener(new UtteranceProgressListener() {
                 @Override
                 public void onStart(String s) {
-
                 }
 
                 @Override
@@ -76,14 +107,12 @@ public class Model_Info extends AppCompatActivity {
                         SoundButton.setBackgroundResource(R.drawable.ic_stop_audio);
                     });
                 }
-
                 @Override
                 public void onError(String s) {
 
                 }
             });
         });
-
 
         SoundButton = findViewById(R.id.Sound_BT);
         SoundButton.setOnClickListener(view -> {
@@ -97,13 +126,7 @@ public class Model_Info extends AppCompatActivity {
                 TTS.stop();
             }
         });
-
     }
-
-//    public void setUtterance(UtteranceProgressListener utterance) {
-//
-//    }
-
 
     private void speak() {
         String text = getString(R.string.earth_description);
@@ -111,7 +134,6 @@ public class Model_Info extends AppCompatActivity {
 
         TTS.speak(text, TextToSpeech.QUEUE_FLUSH, null, "");
     }
-
 
     public void showAToast(String message) {
 
@@ -128,7 +150,7 @@ public class Model_Info extends AppCompatActivity {
             TTS.stop();
             TTS.shutdown();
         }
-
         super.onDestroy();
     }
+
 }
