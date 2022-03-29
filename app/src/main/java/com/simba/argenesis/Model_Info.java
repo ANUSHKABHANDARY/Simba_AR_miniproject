@@ -1,5 +1,5 @@
 package com.simba.argenesis;
-import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,24 +12,25 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.bumptech.glide.Glide;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.bumptech.glide.*;
+
 import java.util.Locale;
 
 public class Model_Info extends AppCompatActivity {
 
+    final boolean[] sound = {false};
     View viewAR;
     ImageButton backButton, favButton, moreButton;
     Toast mToast = null;
     TextToSpeech TTS;
-
     TextView modelName, modelDescription;
     ImageView modelImage;
-
-    final boolean[] sound = {false};
-
     Button SoundButton;
 
 
@@ -67,7 +68,7 @@ public class Model_Info extends AppCompatActivity {
         viewAR = findViewById(R.id.View_AR_Model_Button);
         viewAR.setOnClickListener(view -> {
             Toast.makeText(Model_Info.this, "View Model", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            Intent intent = new Intent(getApplicationContext(), viewModel.class);
             startActivity(intent);
         });
         backButton = findViewById(R.id.Back_Button);
@@ -76,6 +77,9 @@ public class Model_Info extends AppCompatActivity {
 
         backButton.setOnClickListener(view -> {
             showAToast("Back Button");
+            Intent intent = new Intent(getApplicationContext(), All_Categories.class);
+            startActivity(intent);
+            finish();
         });
 
         favButton.setOnClickListener(view -> {
@@ -107,6 +111,7 @@ public class Model_Info extends AppCompatActivity {
                         SoundButton.setBackgroundResource(R.drawable.ic_stop_audio);
                     });
                 }
+
                 @Override
                 public void onError(String s) {
 
