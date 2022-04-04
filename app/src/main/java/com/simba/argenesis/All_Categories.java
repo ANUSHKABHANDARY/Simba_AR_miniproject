@@ -16,17 +16,6 @@ public class All_Categories extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_categories);
 
-
-//        new CountDownTimer(5000, 1000) {
-//
-//            public void onTick(long millisUntilFinished) {
-//            }
-//
-//            public void onFinish() {
-//                showAToast("Count Down Complete");
-//            }
-//        }.start();
-
         CardView catSolarSystem = findViewById(R.id.catSolarSystem);
         catSolarSystem.setOnClickListener(view -> {
             Intent intent = new Intent(getApplicationContext(), Model_Info.class);

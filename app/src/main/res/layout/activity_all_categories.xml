@@ -13,19 +13,17 @@
         android:gravity="left">
 
         <androidx.cardview.widget.CardView
-            android:layout_width="360dp"
-            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_margin="20dp"
             app:cardCornerRadius="15dp">
 
             <SearchView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:iconifiedByDefault="false">
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
             </SearchView>
 
         </androidx.cardview.widget.CardView>
@@ -81,7 +79,7 @@
                 android:layout_height="50dp"
                 android:layout_margin="10dp"
                 android:clickable="true"
-                app:cardBackgroundColor="@color/teal_200"
+                app:cardBackgroundColor="#0DB7B7"
                 app:cardCornerRadius="15dp"
                 app:cardPreventCornerOverlap="false">
 
