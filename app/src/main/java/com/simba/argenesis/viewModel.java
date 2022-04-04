@@ -32,6 +32,9 @@ public class viewModel extends AppCompatActivity {
     private static final String GLTF_ASSET =
             "https://github.com/KhronosGroup/glTF-Sample-Models/raw/master/2.0/Duck/glTF/Duck.gltf";
 
+    Model_Info model_info = new Model_Info();
+    String Model = model_info.getModel_Flag();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,10 +51,11 @@ public class viewModel extends AppCompatActivity {
         FirebaseApp.initializeApp(this);
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference modelRef = storage.getReference().child("Model_Files/Earth.glb");
+//        StorageReference modelRef = storage.getReference().child("Model_Files/Solar System/Mars/Mars.glb");
+        StorageReference modelRef = storage.getReference().child("Model_Files/Solar System/"+Model+"/"+Model+".glb");
 
         try {
-            File file = File.createTempFile("Earth", "glb");
+            File file = File.createTempFile(Model, "glb");
             modelRef.getFile(file).addOnSuccessListener(taskSnapshot -> buildModel(file));
         } catch (IOException e) {
             e.printStackTrace();

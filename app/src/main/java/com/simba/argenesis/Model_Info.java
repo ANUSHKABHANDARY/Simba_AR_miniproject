@@ -2,6 +2,7 @@ package com.simba.argenesis;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.ColorSpace;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.UtteranceProgressListener;
@@ -32,7 +33,8 @@ public class Model_Info extends AppCompatActivity {
     TextView modelName, modelDescription;
     ImageView modelImage;
     Button SoundButton;
-
+    String TTS_String;
+    String Model_Flag = "Earth";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +46,7 @@ public class Model_Info extends AppCompatActivity {
         Context context = getBaseContext();
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DocumentReference docRef = db.collection("Model_Information").document("6xfT3Ve9QruwkaqUSrVz");
+        DocumentReference docRef = db.collection("Model_Information").document("Models").collection("Solar System").document(Model_Flag);
 
         docRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
@@ -52,6 +54,7 @@ public class Model_Info extends AppCompatActivity {
                 if (document.exists()) {
                     Log.d("TAG", "DocumentSnapshot data: " + document.getData());
 
+                    TTS_String = document.getString("Model_Description");
                     modelName.setText((CharSequence) document.get("Model_Name"));
                     modelDescription.setText((CharSequence) document.get("Model_Description"));
                     Glide.with(context)
@@ -134,10 +137,10 @@ public class Model_Info extends AppCompatActivity {
     }
 
     private void speak() {
-        String text = getString(R.string.earth_description);
+//        String text = getString(R.string.earth_description);
         SoundButton = findViewById(R.id.Sound_BT);
 
-        TTS.speak(text, TextToSpeech.QUEUE_FLUSH, null, "");
+        TTS.speak(TTS_String, TextToSpeech.QUEUE_FLUSH, null, "");
     }
 
     public void showAToast(String message) {
@@ -156,6 +159,14 @@ public class Model_Info extends AppCompatActivity {
             TTS.shutdown();
         }
         super.onDestroy();
+    }
+
+    public String getModel_Flag() {
+        return Model_Flag;
+    }
+
+    public void setModel_Flag(String model_Flag) {
+        Model_Flag = model_Flag;
     }
 
 }
