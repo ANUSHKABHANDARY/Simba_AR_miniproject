@@ -1,20 +1,13 @@
 package com.simba.argenesis;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Gravity;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.ar.core.Anchor;
 import com.google.ar.sceneform.AnchorNode;
 import com.google.ar.sceneform.assets.RenderableSource;
@@ -25,26 +18,27 @@ import com.google.ar.sceneform.ux.ArFragment;
 import com.google.ar.sceneform.ux.TransformableNode;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.io.File;
 import java.io.IOException;
 
-public class MainActivity extends AppCompatActivity {
+public class viewModel extends AppCompatActivity {
 
     private ArFragment arFragment;
     Button clearArView;
     private static final String GLTF_ASSET =
             "https://github.com/KhronosGroup/glTF-Sample-Models/raw/master/2.0/Duck/glTF/Duck.gltf";
 
+    Model_Info model_info = new Model_Info();
+    String Model = model_info.getModel_Flag();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.model_view);
 
         // Access a Cloud Firestore instance from your Activity
 
@@ -57,10 +51,11 @@ public class MainActivity extends AppCompatActivity {
         FirebaseApp.initializeApp(this);
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference modelRef = storage.getReference().child("Model_Files/Earth.glb");
+//        StorageReference modelRef = storage.getReference().child("Model_Files/Solar System/Mars/Mars.glb");
+        StorageReference modelRef = storage.getReference().child("Model_Files/Solar System/"+Model+"/"+Model+".glb");
 
         try {
-            File file = File.createTempFile("Earth", "glb");
+            File file = File.createTempFile(Model, "glb");
             modelRef.getFile(file).addOnSuccessListener(taskSnapshot -> buildModel(file));
         } catch (IOException e) {
             e.printStackTrace();
@@ -102,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
         clearArView = findViewById(R.id.clear_ar_viewButton);
         clearArView.setOnClickListener(view -> {
-            Intent i = new Intent(this, MainActivity.class);
+            Intent i = new Intent(this, viewModel.class);
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
             this.startActivity(i);
         });

@@ -117,8 +117,7 @@
                 android:id="@+id/Model_Image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                app:srcCompat="@drawable/earth_model" />
+                android:layout_gravity="center" />
         </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
     <!--    </LinearLayout>-->
@@ -161,7 +160,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:layout_marginBottom="10dp"
-                        android:text="Earth 3D Model"
                         android:textColor="@color/black"
                         android:textSize="30sp"
                         android:textStyle="bold" />
@@ -196,7 +194,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="@string/earth_description"
                         android:textSize="16sp" />
 
                     <!--                        <androidx.cardview.widget.CardView-->
@@ -238,12 +235,10 @@
                         android:layout_marginBottom="30dp"
                         android:background="@drawable/cus_bottom"
                         android:paddingHorizontal="60dp"
-                        android:text="View Model"
+                        android:text="View AR Model"
                         android:textColor="#4E342E" />
 
                 </LinearLayout>
-<!--            </androidx.cardview.widget.CardView>-->
-<!--            </ImageView>-->
         </LinearLayout>
 
     <androidx.constraintlayout.widget.Barrier
