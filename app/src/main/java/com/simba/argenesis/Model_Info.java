@@ -76,6 +76,8 @@ public class Model_Info extends AppCompatActivity {
 
         backButton.setOnClickListener(view -> {
             showAToast("Back Button");
+            Intent intent = new Intent(getApplicationContext(), HomePage.class);
+            startActivity(intent);
         });
 
         favButton.setOnClickListener(view -> {
