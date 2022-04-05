@@ -80,6 +80,7 @@ public class Model_Info extends AppCompatActivity {
 
         backButton.setOnClickListener(view -> {
             showAToast("Back Button");
+
             TTS.stop();
             Intent intent = new Intent(getApplicationContext(), All_Categories.class);
             startActivity(intent);
