@@ -1,5 +1,7 @@
 package com.simba.argenesis;
 
+import static android.util.Log.d;
+
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.ColorSpace;
@@ -34,7 +36,9 @@ public class Model_Info extends AppCompatActivity {
     ImageView modelImage;
     Button SoundButton;
     String TTS_String;
-    String Model_Flag = "Earth";
+    String Model_Flag;
+    Models models = new Models();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +48,7 @@ public class Model_Info extends AppCompatActivity {
         modelDescription = findViewById(R.id.Model_Description);
         modelImage = findViewById(R.id.Model_Image);
         Context context = getBaseContext();
+        getIncomingIntent();
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         DocumentReference docRef = db.collection("Model_Information").document("Models").collection("Solar System").document(Model_Flag);
@@ -52,19 +57,24 @@ public class Model_Info extends AppCompatActivity {
             if (task.isSuccessful()) {
                 DocumentSnapshot document = task.getResult();
                 if (document.exists()) {
-                    Log.d("TAG", "DocumentSnapshot data: " + document.getData());
+                    d("TAG", "DocumentSnapshot data: " + document.getId() + " " + document.getData());
+
 
                     TTS_String = document.getString("Model_Description");
                     modelName.setText((CharSequence) document.get("Model_Name"));
+//                    Model_Flag = document.getId();
+//                    models.setModel_Uid(Model_Flag);
+//                    d("TAG", "DocumentSnapshot data: " + document.getId() + " " + document.getData());
+                    d("ModelFlag", Model_Flag);
                     modelDescription.setText((CharSequence) document.get("Model_Description"));
                     Glide.with(context)
                             .load(document.get("Model_Image"))
                             .into(modelImage);
                 } else {
-                    Log.d("TAG", "No such document");
+                    d("TAG", "No such document");
                 }
             } else {
-                Log.d("TAG", "get failed with ", task.getException());
+                d("TAG", "get failed with ", task.getException());
             }
         });
 
@@ -72,6 +82,7 @@ public class Model_Info extends AppCompatActivity {
         viewAR.setOnClickListener(view -> {
             Toast.makeText(Model_Info.this, "View Model", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(getApplicationContext(), viewModel.class);
+            intent.putExtra("Model", Model_Flag);
             startActivity(intent);
         });
         backButton = findViewById(R.id.Back_Button);
@@ -136,6 +147,14 @@ public class Model_Info extends AppCompatActivity {
                 TTS.stop();
             }
         });
+    }
+
+    private void getIncomingIntent(){
+        if(getIntent().getExtras() != null){
+            Model_Flag = getIntent().getStringExtra("Model");
+            d("TESTING", Model_Flag);
+            setModel_Flag(Model_Flag);
+        }
     }
 
     private void speak() {

@@ -1,7 +1,16 @@
 package com.simba.argenesis;
 
 public class Models {
-    String Model_Name, Model_Image, Model_File, Model_Description;
+    String Model_Name, Model_Image, Model_File, Model_Description, Model_Uid;
+
+    public Models(String model_Name, String model_Image, String model_File, String model_Description, String model_Uid) {
+        Model_Name = model_Name;
+        Model_Image = model_Image;
+        Model_File = model_File;
+        Model_Description = model_Description;
+        Model_Uid = model_Uid;
+
+    }
 
     public Models(String model_Name, String model_Image) {
         Model_Name = model_Name;
@@ -48,5 +57,13 @@ public class Models {
 
     public void setModel_Description(String model_Description) {
         Model_Description = model_Description;
+    }
+
+    public String getModel_Uid() {
+        return Model_Uid;
+    }
+
+    public void setModel_Uid(String model_Uid) {
+        Model_Uid = model_Uid;
     }
 }
