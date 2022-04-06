@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -58,6 +59,13 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
 
         });
 
+        holder.view_Model.setOnClickListener(view -> {
+            Intent intent = new Intent(view.getContext(), viewModel.class);
+            intent.putExtra("Model", UID);
+            Log.d("Testing", UID);
+            context.startActivity(intent);
+        });
+
     }
 
 
@@ -71,12 +79,14 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
 
         TextView Model_Name;
         ImageView Model_Image;
+        CardView view_Model;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             Model_Name = itemView.findViewById(R.id.modelNameRecyclerView);
             Model_Image = itemView.findViewById(R.id.modelImageRecyclerView);
+            view_Model = itemView.findViewById(R.id.viewModelRecyclerView);
 
         }
     }

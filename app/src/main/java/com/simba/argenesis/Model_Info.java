@@ -93,8 +93,8 @@ public class Model_Info extends AppCompatActivity {
             showAToast("Back Button");
 
             TTS.stop();
-            Intent intent = new Intent(getApplicationContext(), All_Categories.class);
-            startActivity(intent);
+//            Intent intent = new Intent(getApplicationContext(), All_Categories.class);
+//            startActivity(intent);
             finish();
         });
 

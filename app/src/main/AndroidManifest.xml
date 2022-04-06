@@ -31,10 +31,10 @@
             android:exported="false" />
         <activity
             android:name=".viewModel"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".Model_Info"
-            android:exported="true" />
+            android:exported="false" />
 
         <meta-data
             android:name="com.google.ar.core"

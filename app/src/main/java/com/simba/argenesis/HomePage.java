@@ -1,7 +1,9 @@
 package com.simba.argenesis;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,10 +32,18 @@ public class HomePage extends AppCompatActivity {
     FirebaseFirestore db;
     Models models;
 
+    TextView viewAllCategories;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+
+        viewAllCategories = findViewById(R.id.viewAllCategories);
+        viewAllCategories.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), All_Categories.class);
+            startActivity(intent);
+        });
 
         recyclerView = findViewById(R.id.featuredModelsRecyclerView);
         recyclerView.setHasFixedSize(true);
@@ -47,7 +57,6 @@ public class HomePage extends AppCompatActivity {
         recyclerViewAdapter = new recyclerViewAdapter(HomePage.this, modelsArrayList);
 
         recyclerView.setAdapter(recyclerViewAdapter);
-
 
         EventChangeListener();
     }

@@ -33,26 +33,29 @@
             android:gravity="center"
             android:layout_margin="10dp">
             <androidx.cardview.widget.CardView
+                android:id="@+id/viewModelRecyclerView"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_height="48dp"
                 app:cardCornerRadius="10dp"
                 android:clickable="true"
-                app:cardBackgroundColor="#000000"
-                >
+                app:cardBackgroundColor="#000000">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="View Model"
-                    android:textStyle="bold"
-                    android:textColor="#ffffff"
                     android:layout_marginLeft="25dp"
-                    android:layout_marginRight="25dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"/>
+                    android:layout_marginRight="25dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_gravity="center"
+                    android:text="View Model"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold" />
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
+                android:id="@+id/favouriteRecyclerView"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_height="48dp"
                 app:cardCornerRadius="10dp"
                 app:cardBackgroundColor="#0DB7B7"
                 android:layout_marginLeft="10dp">
@@ -62,6 +65,7 @@
                     android:layout_height="40dp"
                     android:src="@drawable/like"
                     android:scaleType="centerInside"
+                    android:layout_gravity="center"
                     android:clickable="true"
                     android:background="#0DB7B7"
                     app:tint="#ffffff">

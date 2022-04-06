@@ -3,7 +3,6 @@ package com.simba.argenesis;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -91,15 +90,15 @@ public class viewModel extends AppCompatActivity {
 
         clearArView = findViewById(R.id.clear_ar_viewButton);
         clearArView.setOnClickListener(view -> {
-            Intent i = new Intent(this, viewModel.class);
-            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            this.startActivity(i);
+            Intent intent = new Intent(this, viewModel.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            this.startActivity(intent);
         });
 
     }
 
-    private void getIncomingIntent(){
-        if(getIntent().getExtras() != null){
+    private void getIncomingIntent() {
+        if (getIntent().getExtras() != null) {
             Model = getIntent().getStringExtra("Model");
         }
     }
@@ -108,7 +107,7 @@ public class viewModel extends AppCompatActivity {
         RenderableSource renderableSource = RenderableSource
                 .builder()
                 .setSource(this, Uri.parse(file.getPath()), RenderableSource.SourceType.GLB)
-                .setScale(0.001f)  // Scale the original model to 50%.
+                .setScale(0.5f)  // Scale the original model to 50%.
                 .setRecenterMode(RenderableSource.RecenterMode.ROOT)
                 .build();
 

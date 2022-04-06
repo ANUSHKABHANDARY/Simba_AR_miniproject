@@ -18,8 +18,8 @@ public class All_Categories extends AppCompatActivity {
 
         CardView catSolarSystem = findViewById(R.id.catSolarSystem);
         catSolarSystem.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), Model_Info.class);
-            startActivity(intent);
+//            Intent intent = new Intent(getApplicationContext(), Model_Info.class);
+//            startActivity(intent);
             finish();
         });
     }
