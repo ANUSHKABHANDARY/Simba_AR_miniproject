@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/admin/AndroidStudioProjects/Simba_AR_miniproject/app/src/main/res/layout/activity_model_info.xml" value="0.384375" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/Simba_AR_miniproject/app/src/main/res/layout/activity_subcategories.xml" value="0.384375" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/Simba_AR_miniproject/app/src/main/res/layout/model_view.xml" value="0.384375" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/Simba_AR_miniproject/app/src/main/res/layout/subcat_carditem.xml" value="0.384375" />
         <entry key="..\:/Users/joeld/AndroidStudioProjects/ARGenesis/app/src/main/res/layout/activity_main.xml" value="0.16770833333333332" />
         <entry key="..\:/Users/joeld/AndroidStudioProjects/Simba_AR_miniproject/app/src/main/res/drawable/cus_bottom.xml" value="0.1995" />
         <entry key="..\:/Users/joeld/AndroidStudioProjects/Simba_AR_miniproject/app/src/main/res/drawable/ic_stop_audio.xml" value="0.2115" />
