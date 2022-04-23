@@ -30,6 +30,9 @@
             android:name=".All_Categories"
             android:exported="false" />
         <activity
+            android:name=".Subcategories"
+            android:exported="false" />
+        <activity
             android:name=".viewModel"
             android:exported="false" />
         <activity

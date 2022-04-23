@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -27,10 +28,12 @@ public class HomePage extends AppCompatActivity {
 //    private final int[] images = {R.drawable.earth, R.drawable.moon};
 
     RecyclerView recyclerView;
+    CardView homeSolar;
     ArrayList<Models> modelsArrayList;
+    Models models = new Models();
     recyclerViewAdapter recyclerViewAdapter;
     FirebaseFirestore db;
-    Models models;
+
 
     TextView viewAllCategories;
 
@@ -45,6 +48,12 @@ public class HomePage extends AppCompatActivity {
             startActivity(intent);
         });
 
+        homeSolar = findViewById(R.id.homeSolar);
+        homeSolar.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), Subcategories.class);
+            startActivity(intent);
+        });
+
         recyclerView = findViewById(R.id.featuredModelsRecyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -54,7 +63,7 @@ public class HomePage extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance();
         modelsArrayList = new ArrayList<Models>();
-        recyclerViewAdapter = new recyclerViewAdapter(HomePage.this, modelsArrayList);
+        recyclerViewAdapter = new recyclerViewAdapter(HomePage.this, modelsArrayList, 1);
 
         recyclerView.setAdapter(recyclerViewAdapter);
 

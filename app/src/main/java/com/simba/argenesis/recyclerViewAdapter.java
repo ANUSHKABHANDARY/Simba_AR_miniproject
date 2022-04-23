@@ -1,4 +1,5 @@
 package com.simba.argenesis;
+
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -8,14 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.google.firebase.firestore.DocumentReference;
 
 import java.util.ArrayList;
 
@@ -25,18 +24,37 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
     ArrayList<Models> modelsArrayList;
     Model_Info model_info = new Model_Info();
 
-    public recyclerViewAdapter(Context context, ArrayList<Models> modelsArrayList) {
+    Models models = new Models();
+
+    int ViewHolderType;
+
+    public recyclerViewAdapter(Context context, ArrayList<Models> modelsArrayList, int viewHolderType) {
         this.context = context;
         this.modelsArrayList = modelsArrayList;
+        this.ViewHolderType = viewHolderType;
     }
 
-    @NonNull
+
     @Override
-    public recyclerViewAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        
+        View view;
 
-        View view = LayoutInflater.from(context).inflate(R.layout.card_home, parent, false);
+        switch (ViewHolderType) {
+            case 1:
+                view = LayoutInflater.from(context).inflate(R.layout.card_home, parent, false);
+                break;
 
+            case 2:
+                view = LayoutInflater.from(context).inflate(R.layout.card_subcat, parent, false);
+                break;
+
+            default:
+                throw new IllegalStateException("Unexpected value: " + ViewHolderType);
+        }
+        Log.d("TAG", "ViewHolderType = "+ViewHolderType);
         return new MyViewHolder(view);
+
     }
 
     @Override
@@ -66,6 +84,7 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
             context.startActivity(intent);
         });
 
+
     }
 
 
@@ -75,7 +94,7 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
     }
 
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder{
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView Model_Name;
         ImageView Model_Image;
@@ -90,4 +109,5 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
 
         }
     }
+
 }

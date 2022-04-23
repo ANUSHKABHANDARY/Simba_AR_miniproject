@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="150dp"
+    android:layout_height="230dp"
+    android:layout_margin="10dp"
+    android:elevation="25dp"
+    android:orientation="horizontal"
+    app:cardBackgroundColor="#EFEFEF"
+    app:cardCornerRadius="20dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:cardCornerRadius="20dp"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/modelImageRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+
+                android:clickable="true"
+
+                android:scaleType="centerInside" />
+        </androidx.cardview.widget.CardView>
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+
+            <TextView
+                android:id="@+id/modelNameRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Earth"
+                android:textColor="#000000"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:gravity="center">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/viewModelRecyclerView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+
+                    android:clickable="true"
+                    app:cardBackgroundColor="#000000"
+                    app:cardCornerRadius="10dp">
+
+                    <TextView
+                        android:paddingHorizontal="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="5dp"
+                        android:padding="4dp"
+                        android:text="View Model"
+                        android:textColor="#ffffff"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </androidx.cardview.widget.CardView>
+
+<!--                <androidx.cardview.widget.CardView-->
+<!--                    android:id="@+id/favouriteRecyclerView"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginLeft="10dp"-->
+<!--                    app:cardBackgroundColor="#0DB7B7"-->
+<!--                    app:cardCornerRadius="10dp">-->
+
+<!--                    <ImageButton-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:padding="4dp"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        android:background="#0DB7B7"-->
+<!--                        android:clickable="true"-->
+<!--                        android:scaleType="centerInside"-->
+<!--                        android:src="@drawable/like"-->
+<!--                        app:tint="#ffffff" />-->
+<!--                    &lt;!&ndash;                    <TextView&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        android:layout_width="wrap_content"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        android:text="Like"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        android:textStyle="bold"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        android:textColor="#ffffff"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        android:layout_marginLeft="25dp"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        android:layout_marginRight="25dp"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        android:layout_marginTop="10dp"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        android:layout_marginBottom="10dp"/>&ndash;&gt;-->
+<!--                </androidx.cardview.widget.CardView>-->
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

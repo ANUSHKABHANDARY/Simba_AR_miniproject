@@ -86,10 +86,12 @@
             android:scrollbars="horizontal">
         </ListView>-->
         <androidx.cardview.widget.CardView
+            android:id="@+id/homeSolar"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             app:cardCornerRadius="10dp"
             app:cardBackgroundColor="#0DB7B7"
+            android:clickable="true"
             android:layout_margin="5dp">
             <TextView
                 android:layout_width="wrap_content"
@@ -201,7 +203,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_marginVertical="10dp"
         >
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/featuredModelsRecyclerView"
