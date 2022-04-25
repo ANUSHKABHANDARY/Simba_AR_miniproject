@@ -3,69 +3,72 @@ package com.simba.argenesis;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.TextView;
+import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.firestore.DocumentChange;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
-public class HomePage extends AppCompatActivity {
-
-//    private ListView mListView;
-//    private final String[] names = {"Earth", "Moon"};
-//    private final int[] images = {R.drawable.earth, R.drawable.moon};
+public class Subcategories extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    CardView homeSolar;
     ArrayList<Models> modelsArrayList;
-    Models models = new Models();
     recyclerViewAdapter recyclerViewAdapter;
     FirebaseFirestore db;
-
-
-    TextView viewAllCategories;
+    private ImageView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_page);
+        setContentView(R.layout.activity_subcategories);
 
-        viewAllCategories = findViewById(R.id.viewAllCategories);
-        viewAllCategories.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), All_Categories.class);
+
+//        Subcat_models[] subcatmodels = new Subcat_models[]{
+//                new Subcat_models("Earth",R.drawable.earth),
+//                new Subcat_models("Mars",R.drawable.mars),
+//                new Subcat_models("Mercury",R.drawable.mercury),
+//                new Subcat_models("Earth",R.drawable.earth),
+//                new Subcat_models("Mars",R.drawable.mars),
+//                new Subcat_models("Mercury",R.drawable.mercury),
+//                new Subcat_models("Earth",R.drawable.earth),
+//                new Subcat_models("Mars",R.drawable.mars),
+//                new Subcat_models("Mercury",R.drawable.mercury),
+//                new Subcat_models("Earth",R.drawable.earth),
+//                new Subcat_models("Mars",R.drawable.mars),
+//                new Subcat_models("Mercury",R.drawable.mercury),
+//        };
+
+//        Subcat_adapter subcat_adapter = new Subcat_adapter(subcatmodels,Subcategories.this);
+
+        back = findViewById(R.id.back);
+        back.setOnClickListener(v -> {
+            Intent intent = new Intent(Subcategories.this, All_Categories.class);
             startActivity(intent);
         });
 
-        homeSolar = findViewById(R.id.homeSolar);
-        homeSolar.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), Subcategories.class);
-            startActivity(intent);
-        });
-
-        recyclerView = findViewById(R.id.featuredModelsRecyclerView);
-        recyclerView.setHasFixedSize(true);
+        recyclerView = findViewById(R.id.subCategoriesRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        LinearLayoutManager HorizontalLayout = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        recyclerView.setLayoutManager(HorizontalLayout);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false);
+
+        recyclerView.setLayoutManager(gridLayoutManager);
 
         db = FirebaseFirestore.getInstance();
         modelsArrayList = new ArrayList<Models>();
-        recyclerViewAdapter = new recyclerViewAdapter(HomePage.this, modelsArrayList, 1);
+        recyclerViewAdapter = new recyclerViewAdapter(Subcategories.this, modelsArrayList, 2);
 
         recyclerView.setAdapter(recyclerViewAdapter);
+
 
         EventChangeListener();
     }
@@ -95,5 +98,4 @@ public class HomePage extends AppCompatActivity {
                     }
                 });
     }
-
 }
